@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular1.min.js"></script>
+	</head>
+	<body ng-app="app" ng-controller="ctrl">
+		<!--
+        	location  只读
+        -->
+		<div>absUrl地址:{{a}}</div>
+		<div>host(主机)地址:{{b}}</div>
+		<div>port(端口)地址:{{c}}</div>
+		<div>protocol协议:{{d}}</div>
+		
+	</body>
+	<script type="text/javascript">
+		var mod=angular.module("app",[]);
+		mod.controller("ctrl",function($scope,$location){
+		//location 只读
+		$scope.a=$location.absUrl()
+		$scope.b=$location.host();
+		$scope.c=$location.port()
+		$scope.d=$location.protocol()
+		//location 读、写
+		$location.hash("aaa")
+		$location.path('bbb')
+		$location.url("aaaaaaaaaaaaaaaa")
+		})
+	</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular1.min.js"></script>
+	</head>
+	<body ng-app="app" ng-controller="ctrl">
+		<div><input type="text" ng-model="ipt"/><button ng-click="tap()">百度</button></div>
+		<div>{{list}}</div>
+	</body>
+	<script type="text/javascript">
+		var mod=angular.module("app",[]);
+		mod.controller("ctrl",function($scope,$http){
+			$scope.tap=function(){
+				$http({
+				method:'JSONP'
+				url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+$scope.ipt+'&cb=JSON_CALLBACK'
+				}).success(function(data){
+					console.log(data)
+				})
+			}
+			
+		})
+	</script>
+</html>
